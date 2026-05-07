@@ -1,18 +1,32 @@
+# Premium MERN Portfolio - Complete `index.html`
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sinchana | MERN Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sinchana | MERN Stack Developer</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    body { font-family: sans-serif; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    .glass {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
     }
 
     .gradient-text {
@@ -21,19 +35,36 @@
       color: transparent;
     }
 
-    .card {
-      padding: 20px;
-      border-radius: 16px;
+    .glass {
       background: rgba(255,255,255,0.05);
-      transition: 0.3s;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .card:hover { transform: translateY(-10px); }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 24px;
+      transition: 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(99,102,241,0.3);
+    }
 
     .btn {
+      padding: 12px 24px;
+      border-radius: 12px;
       background: #6366f1;
-      padding: 8px 16px;
-      border-radius: 8px;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: #4f46e5;
+      transform: scale(1.05);
     }
 
     #progressBar {
@@ -43,162 +74,332 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 100;
+      z-index: 999;
+    }
+
+    .blob {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.25;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .blob1 {
+      background: #6366f1;
+      top: -100px;
+      left: -100px;
+    }
+
+    .blob2 {
+      background: #22c55e;
+      bottom: -100px;
+      right: -100px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(20px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .typing {
+      border-right: 3px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
     }
   </style>
 </head>
 
+<body>
 
-<body class="bg-[#020617] text-white">
-
-<!-- 🔝 Loader -->
-<div id="loader" class="fixed w-full h-full bg-black flex items-center justify-center z-50">
-  <h1 class="text-2xl">Loading...</h1>
-</div>
-
-<!-- 🔝 Progress Bar -->
 <div id="progressBar"></div>
 
-<!-- 🚀 NAVBAR -->
-<nav class="glass fixed w-full flex justify-between p-5 z-50">
-  <h1 class="text-xl font-bold">Sinchana</h1>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
 
-  <div class="flex gap-4">
-    <button onclick="scrollToSection('about')">About</button>
-    <button onclick="scrollToSection('skills')">Skills</button>
-    <button onclick="scrollToSection('projects')">Projects</button>
-    <button onclick="scrollToSection('contact')">Contact</button>
-    <button id="themeBtn">🌙</button>
+<nav class="glass fixed top-0 w-full flex justify-between items-center px-8 py-5 z-50">
+  <h1 class="text-2xl font-bold gradient-text">Sinchana</h1>
+
+  <div class="hidden md:flex gap-6 text-sm">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- 💎 HERO -->
-<section class="h-screen flex flex-col justify-center items-center text-center">
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative z-10">
 
-  <!-- 👩‍💻 PROFILE IMAGE -->
-  
-    
+  <img src="assets/profile.jpeg"
+       alt="profile"
+       class="w-40 h-40 rounded-full border-4 border-indigo-500 object-cover shadow-2xl hover:scale-105 transition duration-500">
 
-  <h1 class="text-5xl font-bold gradient-text">
-    Hi, I'm Sinchana 
+  <h1 class="text-6xl md:text-7xl font-extrabold mt-8 leading-tight">
+    Hi, I'm <span class="gradient-text">Sinchana</span>
   </h1>
 
-  <p id="typing" class="mt-4 text-gray-400 text-lg"></p>
+  <h2 class="typing text-2xl text-gray-300 mt-5" id="typing"></h2>
 
-  <div class="mt-6 flex gap-4">
-    <a href="https://github.com/" target="_blank" class="btn">GitHub</a>
-    <a href="https://www.linkedin.com/in/sinchana-sinchana-418635313/" target="_blank" class="btn">LinkedIn</a>
-  </div>
-</section>
-<a href="assets/resume.pdf" download class="p-4 m-4 btn bg-green-500 justify-center items-center" >
-  Download Resume
-</a>
-
-<!-- 📊 STATS -->
-<section class="p-10 grid grid-cols-3 gap-6 text-center">
-  <div class="card">
-    <h2 id="projectsCount" class="text-3xl font-bold">3</h2>
-    <p>Projects</p>
-  </div>
-
-  <div class="card">
-    <h2 id="skillsCount" class="text-3xl font-bold">6</h2>
-    <p>Skills</p>
-  </div>
-
-  <div class="card">
-    <h2 class="text-3xl font-bold">12+</h2>
-    <p>Months Learning</p>
-  </div>
-</section>
-
-<!-- 🧠 ABOUT -->
-<section id="about" class="p-10 text-center reveal">
-  <h2 class="text-3xl mb-4">About Me</h2>
-  <p class="text-gray-400 max-w-2xl mx-auto">
-    I am a passionate MERN Stack Developer focused on building scalable web applications,
-    clean UI/UX, and real-world problem solving.
+  <p class="max-w-2xl mt-6 text-gray-400 text-lg leading-8">
+    Final Year Computer Science Engineering student passionate about MERN Stack Development,
+    AI-powered applications, scalable systems, and beautiful user experiences.
   </p>
+
+  <div class="flex gap-5 mt-10 flex-wrap justify-center">
+
+    <a href="https://github.com/sinchana0913-prog"
+       target="_blank"
+       class="btn">
+       GitHub
+    </a>
+
+    <a href="https://www.linkedin.com/in/sinchana-sinchana-418635313/"
+       target="_blank"
+       class="btn bg-green-500 hover:bg-green-600">
+       LinkedIn
+    </a>
+
+    <a href="assets/resume.pdf"
+       download
+       class="btn bg-white text-black hover:bg-gray-200">
+       Download Resume
+    </a>
+
+  </div>
 </section>
 
-<!-- ⚙️ SKILLS -->
-<section id="skills" class="p-10 reveal">
-  <h2 class="text-3xl mb-4">Skills</h2>
-</section>
+<section class="grid md:grid-cols-3 gap-8 p-10 max-w-6xl mx-auto">
 
-<!-- 🔍 PROJECTS -->
-<section id="projects" class="p-10">
-
-  <input id="search" placeholder="Search projects..."
-         class="p-2 text-black rounded"/>
-
-  <div class="flex gap-3 mt-4">
-    <button onclick="filterProjects('All')" class="btn">All</button>
-    <button onclick="filterProjects('MERN')" class="btn">MERN</button>
-    <button onclick="filterProjects('React')" class="btn">React</button>
+  <div class="card text-center">
+    <h2 class="text-5xl font-bold gradient-text">4+</h2>
+    <p class="mt-3 text-gray-400">Projects Completed</p>
   </div>
 
-  <div id="projectsContainer" class="grid grid-cols-3 gap-6 mt-6"></div>
+  <div class="card text-center">
+    <h2 class="text-5xl font-bold gradient-text">10+</h2>
+    <p class="mt-3 text-gray-400">Technologies</p>
+  </div>
+
+  <div class="card text-center">
+    <h2 class="text-5xl font-bold gradient-text">2026</h2>
+    <p class="mt-3 text-gray-400">Graduation Year</p>
+  </div>
+
 </section>
 
-<!-- 🧩 MODAL -->
-<div id="modal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center">
-  <div class="bg-white text-black p-6 rounded w-1/2">
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-    <a id="modalGithub" target="_blank">GitHub</a>
-    <a id="modalLive" target="_blank" class="ml-4">Live</a>
-    <button onclick="closeModal()" class="block mt-4">Close</button>
+<section id="about" class="py-24 px-8 max-w-6xl mx-auto">
+
+  <h2 class="text-5xl font-bold text-center mb-14 gradient-text">About Me</h2>
+
+  <div class="card text-center text-lg leading-9 text-gray-300">
+    I am a passionate MERN Stack Developer focused on building scalable,
+    responsive, and user-centric web applications. I enjoy solving real-world
+    problems through innovative development strategies and modern technologies.
+    My interests include Full Stack Development, AI Integration, and UI/UX Design.
   </div>
-</div>
 
-<!-- 📬 CONTACT -->
-<section id="contact" class="p-10 text-center">
-  <h2 class="text-3xl mb-4">Contact Me</h2>
+</section>
 
-  <form id="contactForm">
-    <input type="text" placeholder="Name" required class="p-2 m-2 text-black"/>
-    <input type="email" placeholder="Email" required class="p-2 m-2 text-black"/>
-    <textarea placeholder="Message" class="p-2 m-2 text-black"></textarea>
-    <br/>
-    <button class="btn mt-3">Send Message</button>
+<section id="skills" class="py-24 px-8 max-w-6xl mx-auto">
+
+  <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Skills</h2>
+
+  <div class="grid md:grid-cols-4 gap-8">
+
+    <div class="card text-center">HTML</div>
+    <div class="card text-center">CSS</div>
+    <div class="card text-center">JavaScript</div>
+    <div class="card text-center">React JS</div>
+    <div class="card text-center">Node JS</div>
+    <div class="card text-center">Express JS</div>
+    <div class="card text-center">MongoDB</div>
+    <div class="card text-center">Tailwind CSS</div>
+
+  </div>
+
+</section>
+
+<section id="projects" class="py-24 px-8 max-w-7xl mx-auto">
+
+  <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Projects</h2>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-4">AI Resume Builder</h3>
+
+      <p class="text-gray-400 leading-7">
+        AI-powered resume builder using OpenAI integration with dynamic templates
+        and professional resume generation.
+      </p>
+
+      <div class="mt-6 flex gap-4">
+        <a href="#" class="btn">Live</a>
+        <a href="#" class="btn bg-green-500 hover:bg-green-600">Code</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-4">Two Way Communication System</h3>
+
+      <p class="text-gray-400 leading-7">
+        Communication platform designed for deaf and dumb users using gesture-based interaction.
+      </p>
+
+      <div class="mt-6 flex gap-4">
+        <a href="#" class="btn">Live</a>
+        <a href="#" class="btn bg-green-500 hover:bg-green-600">Code</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="text-2xl font-bold mb-4">BookMyShow Clone</h3>
+
+      <p class="text-gray-400 leading-7">
+        Responsive movie booking platform clone with modern UI and booking workflow.
+      </p>
+
+      <div class="mt-6 flex gap-4">
+        <a href="#" class="btn">Live</a>
+        <a href="#" class="btn bg-green-500 hover:bg-green-600">Code</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="journey" class="py-24 px-8 max-w-5xl mx-auto">
+
+  <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Journey</h2>
+
+  <div class="space-y-8">
+
+    <div class="card">
+      <h3 class="text-2xl font-bold">Started MERN Stack Development</h3>
+      <p class="text-gray-400 mt-4 leading-7">
+        Learned React, Node.js, MongoDB, and Express to build scalable web applications.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 class="text-2xl font-bold">Built AI Resume Builder</h3>
+      <p class="text-gray-400 mt-4 leading-7">
+        Integrated OpenAI APIs and developed dynamic resume generation workflows.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 class="text-2xl font-bold">Developed Accessibility Solution</h3>
+      <p class="text-gray-400 mt-4 leading-7">
+        Designed communication systems focused on accessibility and social impact.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contact" class="py-24 px-8 max-w-4xl mx-auto text-center">
+
+  <h2 class="text-5xl font-bold mb-14 gradient-text">Contact Me</h2>
+
+  <form class="card space-y-6">
+
+    <input type="text"
+           placeholder="Your Name"
+           class="w-full p-4 rounded-xl bg-[#0f172a] outline-none border border-gray-700">
+
+    <input type="email"
+           placeholder="Your Email"
+           class="w-full p-4 rounded-xl bg-[#0f172a] outline-none border border-gray-700">
+
+    <textarea rows="6"
+              placeholder="Your Message"
+              class="w-full p-4 rounded-xl bg-[#0f172a] outline-none border border-gray-700"></textarea>
+
+    <button class="btn w-full">
+      Send Message
+    </button>
+
   </form>
+
 </section>
 
-<!-- 🔔 TOAST -->
-<div id="toast" class="fixed bottom-5 right-5"></div>
-
-<!-- FOOTER -->
-<footer class="text-center p-5 text-gray-500">
-  © 2026 Sinchana | MERN Developer
+<footer class="text-center py-8 text-gray-500 border-t border-gray-800">
+  © 2026 Sinchana | MERN Stack Developer
 </footer>
 
-<!-- ✅ SCRIPTS -->
-<script src="js/data/projects.js"></script>
-<script src="js/data/skills.js"></script>
-<script src="js/data/lang.js"></script>
+<script>
 
-<script src="js/features/renderProjects.js"></script>
-<script src="js/features/filter.js"></script>
-<script src="js/features/search.js"></script>
-<script src="js/features/modal.js"></script>
-<script src="js/features/themePersist.js"></script>
-<script src="js/features/typing.js"></script>
-<script src="js/features/scroll.js"></script>
-<script src="js/features/activeNav.js"></script>
-<script src="js/features/stats.js"></script>
-<script src="js/features/toast.js"></script>
-<script src="js/features/contact.js"></script>
-<script src="js/features/loader.js"></script>
-<script src="js/features/reveal.js"></script>
-<script src="js/features/backToTop.js"></script>
-<script src="js/features/lang.js"></script>
-<script src="js/features/app.js"></script>
-<script src="js/features/lazyLoad.js"></script>
-<script src="js/features/parallax.js"></script>
-<script src="js/features/sectionHighlight.js"></script>
-<script src="js/features/theme.js"></script>
+  const words = [
+    'MERN Stack Developer',
+    'Frontend Developer',
+    'Backend Developer',
+    'AI Enthusiast'
+  ];
 
+  let i = 0;
+  let j = 0;
+  let currentWord = '';
+  let isDeleting = false;
+
+  function type() {
+
+    currentWord = words[i];
+
+    if (!isDeleting) {
+      document.getElementById('typing').textContent = currentWord.substring(0, j++);
+    } else {
+      document.getElementById('typing').textContent = currentWord.substring(0, j--);
+    }
+
+    if (j == currentWord.length + 1) {
+      isDeleting = true;
+      setTimeout(type, 1000);
+      return;
+    }
+
+    if (j == 0) {
+      isDeleting = false;
+      i++;
+
+      if (i == words.length) {
+        i = 0;
+      }
+    }
+
+    setTimeout(type, isDeleting ? 50 : 120);
+  }
+
+  type();
+
+  window.onscroll = function () {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrolled = (winScroll / height) * 100;
+    document.getElementById('progressBar').style.width = scrolled + '%';
+  };
+
+</script>
 
 </body>
 </html>
+
